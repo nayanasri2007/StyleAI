@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StyleAI</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(120deg, #fbc2eb, #a6c1ee);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            width: 420px;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            color: #6a11cb;
+        }
+
+        .subtitle {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        input[type="file"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .result {
+            margin-top: 25px;
+            background: #f4f6ff;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .result h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .result p {
+            margin-top: 8px;
+            color: #444;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>👗 StyleAI</h1>
+    <div class="subtitle">AI-Powered Personal Fashion Stylist</div>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+
+        <select name="gender">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+        </select>
+
+        <button type="submit">Get Style Recommendation</button>
+    </form>
+
+    {% if skin_tone %}
+        <div class="result">
+            <h3>Detected Skin Tone: {{ skin_tone }}</h3>
+            <p>{{ recommendation }}</p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
